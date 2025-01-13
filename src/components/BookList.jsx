@@ -6,11 +6,11 @@ import { Col, Form, Row } from "react-bootstrap";
 class BookList extends Component {
   state = {
     searchQuery: "",
-    selectedBook: null,
+    selectedBookAsin: null,
   };
 
-  handleBookSelection = (book) => {
-    this.setState({ selectedBook: book });
+  handleBookSelection = (asin) => {
+    this.setState({ selectedBookAsin: asin });
   };
 
   render() {
@@ -43,7 +43,8 @@ class BookList extends Component {
                 <Col xs={12} md={4} key={b.asin}>
                   <SingleBook
                     book={b}
-                    onBookSelect={() => this.handleBookSelection(b)}
+                    isSelected={this.state.selectedBookAsin === b.asin}
+                    onBookSelect={this.handleBookSelection}
                   />
                 </Col>
               ))}
@@ -51,8 +52,8 @@ class BookList extends Component {
         </Col>
 
         <Col xs={12} md={4}>
-          {this.state.selectedBook ? (
-            <CommentArea asin={this.state.selectedBook.asin} />
+          {this.state.selectedBookAsin ? (
+            <CommentArea book={this.state.selectedBookAsin} />
           ) : (
             <h5 className="text-center">
               Seleziona un libro per vedere i commenti

@@ -13,7 +13,7 @@ function App() {
       <MyNav />
       <Container>
         <Welcome></Welcome>
-        <BookList books={horror} />
+        <BookList books={fantasy} />
       </Container>
       <MyFooter />
     </>

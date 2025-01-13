@@ -1,9 +1,9 @@
-import { Card } from "react-bootstrap";
 import { Component } from "react";
+import { Card } from "react-bootstrap";
 
 class SingleBook extends Component {
   handleClick = () => {
-    this.props.onBookSelect(this.props.book);
+    this.props.onBookSelect(this.props.book.asin);
   };
 
   render() {
